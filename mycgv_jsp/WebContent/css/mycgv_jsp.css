@@ -56,7 +56,7 @@ section.login form[name='loginForm'], section.join form[name='joinForm']
 	Header style sheet
 ******************************/
 header {
-	background-image: url(http://localhost:9000/mycgv/images/bg_header.gif);
+	background-image: url(http://localhost:9000/mycgv_jsp/images/bg_header.gif);
 	height:149px;
 	/* position: sticky; top: 0; */
 }
@@ -181,7 +181,7 @@ header {
 	Index-Content style sheet
 ******************************/
 .section1 {
-	background-image:url("http://localhost:9000/mycgv/images/carousel_bg.png");
+	background-image:url("http://localhost:9000/mycgv_jsp/images/carousel_bg.png");
 }
 .section1_d1, .section2, .section3 {
 	text-align:center;
