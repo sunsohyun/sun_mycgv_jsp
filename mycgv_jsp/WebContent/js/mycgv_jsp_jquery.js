@@ -1,9 +1,30 @@
 $(document).ready(function(){
 	
 	/*******************************************
-		게시판 글쓰기 폼 체크
+		회원가입 폼 - 아이디 중복체크
 	********************************************/
-	
+	$("#btnIdCheck").click(function(){
+		if($("#id").val() == ""){
+			alert("아이디를 입력해주세요");
+			$("#id").focus();
+			return false;
+		}else{
+			$.ajax({
+				url : "idCheckProc.jsp?id="+$("#id").val(),  //페이지이동이 아님. 웹에서는 안보이고 백단에서 이동하는 방식 = 비동기식 방식! 
+				success : function(result){//문자타입으로 보냈지만 script에서는 타입 정해진거 없음 따라서 숫자타입임
+					if(result == 1){
+						$("#idcheck_msg").text("이미 사용중인 아이디입니다.다시 입력해주세요").css("color","red")
+						.css("font-size","11px").css("display","block").css("padding","8px 0px 8px 170px");
+						$("#id").val("").focus();
+					}else{
+						$("#idcheck_msg").text("사용 가능한 아이디입니다.").css("color","blue").css("font-size","11px")
+						.css("display","block").css("padding","8px 0px 8px 170px");
+						$("#pass").focus();
+					}
+				}
+			});
+		}
+	})
 		
 	
 	
@@ -64,6 +85,9 @@ $(document).ready(function(){
 			alert("아이디를 입력해주세요");
 			$("#id").focus();
 			return false;
+		}else if($("#idcheck_msg").text() == ""){
+			alert("중복체크를 진행해주세요");
+			$("#btnIdCheck").focus;
 		}else if($("#pass").val() == ""){
 			alert("패스워드를 입력해주세요");
 			$("#pass").focus();
@@ -146,7 +170,56 @@ $(document).ready(function(){
 		$("#pass").val("");
 	}); //btnLoginReset click
 
+	/*******************************************
+		게시판 글쓰기 폼
+	 ********************************************/
+	$("#btnBoardWrite").click(function(){
+		if($("#btitle").val() == ""){
+			alert("제목을 입력해주세요");
+			$("#btitle").focus();
+			return false;
+		}else{
+			writeForm.submit();
+		}
+	});
+	
+	
+	
+	
+	
+	
+	
+	
 }); //ready
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -10,7 +10,14 @@
 	MemberDao memberDao = new MemberDao();
 	int result = memberDao.insert(memberVo);
 	if(result == 1){
-		out.write("회원가입 성공");
+		//회원가입 성공 alert 창을 띄우고 페이지 이동시키기
+		out.write("<script>");
+		out.write("alert('회원가입 성공!');");
+		out.write("location.href= 'http://localhost:9000/mycgv_jsp/login/login.jsp'");
+		out.write("</script>");
+		
+		//회원가입 성공시 종료되고 로그인창으로 이동 방법2 / ?붙이는건 쿼리스트링 방식!!외우자 -> 이방식은 밑에잇는 코드 출력안된다.
+		//response.sendRedirect("http://localhost:9000/mycgv_jsp/login/login.jsp?jresult=1");
 	}
 %>
 

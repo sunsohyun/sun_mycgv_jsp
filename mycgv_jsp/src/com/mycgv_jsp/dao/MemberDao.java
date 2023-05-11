@@ -34,4 +34,80 @@ public class MemberDao extends DBConn {
 		return result;
 	}
 	
+	
+	/**
+	 * idCheck - 아이디 중복체크 
+	 */
+	public int idCheck(String id) {
+		int result = 0;
+		String sql = "SELECT COUNT(*) FROM MYCGV_MEMBER WHERE ID = ? ";	//int니까 count 써야함!!!!!!!!
+		
+		getPreparedStatement(sql);
+		
+		try {
+			pstmt.setString(1, id);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				result = rs.getInt(1);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	
+	
+	/**
+	 * loginCheck - 로그인 체크
+	 */
+	public int loginCheck(MemberVo memberVo) {
+		int result = 0;
+		String sql = "SELECT COUNT(*) FROM MYCGV_MEMBER WHERE ID=? AND PASS=?";
+		getPreparedStatement(sql);
+		
+		try {
+			pstmt.setString(1, memberVo.getId());
+			pstmt.setString(2, memberVo.getPass());
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				result = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
