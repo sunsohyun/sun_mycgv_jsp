@@ -11,7 +11,7 @@ public class MemberVo {
 	
 	//member 테이블 컬럼 매핑
 	int rno;
-	String email, addr, pnumber, hobbyList, mdate;	//mdate는 가공은 아니지만 컬럼에 있는거 
+	String email, addr, pnumber, hobbyList, mdate, grade;	//mdate는 가공은 아니지만 컬럼에 있는거 
 	/*
 	 * email --> 폼에서 set X, 테이블 set O
 	 * email --> 폼에서 get O, 테이블 get O
@@ -20,6 +20,12 @@ public class MemberVo {
 	
 	public String getId() {
 		return id;
+	}
+	public String getGrade() {
+		return grade;
+	}
+	public void setGrade(String grade) {
+		this.grade = grade;
 	}
 	public void setId(String id) {
 		this.id = id;

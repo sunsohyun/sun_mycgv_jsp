@@ -1,5 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	String sid = (String)session.getAttribute("sid");
+	if(sid == null){
+		out.write("<script>");
+		out.write("alert('정상적인 접근방식이 아닙니다. 로그인을 진행해주세요.');");
+		out.write("location.href='http://localhost:9000/mycgv_jsp/login/login.jsp';");
+		out.write("</script>");
+	}else{
+		
+		if(!sid.equals("admin")){	//아이디가 admin이 아닌경우
+			out.write("<script>");
+			out.write("alert('관리자 접근 권한이 필요합니다.');");
+			out.write("location.href='http://localhost:9000/mycgv_jsp/index.jsp';");
+			out.write("</script>");
+		}else{
+%>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,6 +48,10 @@
 </body>
 </html>
 
+<% 
+		}//admin check
+	}//sid null check
+%>
 
 
 
